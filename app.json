@@ -33,10 +33,18 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.rizkifatihah.signatureVerification"
+      "package": "com.rizkifatihah.signatureVerification",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "138c8166-c8a5-4419-a836-ff44c029c44c"
+      }
     }
   }
 }
