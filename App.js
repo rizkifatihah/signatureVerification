@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState,createContext} from 'react';
 import { View, Dimensions, Pressable} from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; 
 import EStyleSheet from 'react-native-extended-stylesheet';
-
 import DashboardScreen from './screen/DashboardScreen';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -34,6 +33,8 @@ EStyleSheet.build({$rem: entireScreenWidth / 380});
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
+export let GlobalContext = createContext();
 
 function MyTabBar({ state, descriptors, navigation }) {
   let [selectedTab, setSelectedTab] = useState("Dashboard");
@@ -114,7 +115,9 @@ function MyTabs() {
 }
 
 function MyStack(){
+  let [perangkat, setPerangkat] = useState(null);
   return (
+    <GlobalContext.Provider value={{perangkat,setPerangkat}}>
     <Stack.Navigator
     >
       <Stack.Screen 
@@ -124,6 +127,7 @@ function MyStack(){
       }}
       name="Landing" component={DashboardScreen} />
     </Stack.Navigator>
+    </GlobalContext.Provider>
   )
 }
 
